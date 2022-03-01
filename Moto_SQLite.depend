@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1611910367 source:d:\alain\documents\projets\moto_sqlite\main.c
+	<stdio.h>
+	<stdlib.h>
+	"sqlite3.h"
+	<windows.h>
+	<conio.h>
+
+1585148945 d:\alain\documents\projets\moto_sqlite\sqlite3.h
+	<stdarg.h>
+
+1611911223 source:d:\alain\documents\projets\moto_sqlite\gestion_console.c
+	"gestion_console.h"
+
+1548849769 d:\alain\documents\projets\moto_sqlite\gestion_console.h
+	<windows.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<time.h>
+
+1612093647 source:d:\alain\documents\projets\moto_sqlite\base.c
+
+1612091410 source:d:\alain\documents\projets\moto_sqlite\console.c
+	"console.h"
+
+1612291621 d:\alain\documents\projets\moto_sqlite\console.h
+	<windows.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<time.h>
+
+1612116344 source:d:\alain\documents\projets\moto_sqlite\menu.c
+
+1612095010 source:d:\alain\documents\projets\moto_sqlite\console.cpp
+	"console.h"
+
+1615577944 source:d:\alain\documents\projets\moto_sqlite\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<locale>
+	"console.h"
+	"menu.h"
+	"base.h"
+
+1612121769 d:\alain\documents\projets\moto_sqlite\menu.h
+
+1613653024 d:\alain\documents\projets\moto_sqlite\base.h
+
+1613653024 source:d:\alain\documents\projets\moto_sqlite\menu.cpp
+	"console.h"
+
+1613586304 source:d:\alain\documents\projets\moto_sqlite\base.cpp
+	<stdio.h>
+	"sqlite3.h"
+	<windows.h>
+	"console.h"
+

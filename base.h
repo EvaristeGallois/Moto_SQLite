@@ -1,0 +1,10 @@
+//static int callback(void *NotUsed, int argc, char **argv, char **azColName);
+//static int my_special_callback(void *unused, int count, char **data, char **columns);
+//static int The_Callback(void *a_param, int argc, char **argv, char **column);
+int bd_exec(void);
+int creation_ouverture_bd(void);
+int ajouter_element(void);
+int supprimer_element(void);
+int reindexer_base(void);
+int lister_bd(void);
+int fermer_bd(void);
