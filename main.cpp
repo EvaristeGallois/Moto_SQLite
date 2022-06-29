@@ -48,7 +48,8 @@ int main(int argc, char* argv[])
               ret = supprimer_element();
               break;
             case 5:
-              ret = reindexer_base();
+              ret = renumeroter_ID_base();
+              //ret = reindexer_base();
               break;
 
             case 6:

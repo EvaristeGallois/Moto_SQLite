@@ -62,3 +62,41 @@
 	<windows.h>
 	"console.h"
 
+1612095010 source:c:\users\alain\documents\github\moto_sqlite\console.cpp
+	"console.h"
+
+1656490163 c:\users\alain\documents\github\moto_sqlite\console.h
+	<windows.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<time.h>
+
+1656490449 source:c:\users\alain\documents\github\moto_sqlite\menu.cpp
+	"console.h"
+
+1656489919 source:c:\users\alain\documents\github\moto_sqlite\base.cpp
+	<stdio.h>
+	"sqlite3.h"
+	<windows.h>
+	"console.h"
+
+1585152545 c:\users\alain\documents\github\moto_sqlite\sqlite3.h
+	<stdarg.h>
+
+1656489037 source:c:\users\alain\documents\github\moto_sqlite\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<locale>
+	"console.h"
+	"menu.h"
+	"base.h"
+
+1612121769 c:\users\alain\documents\github\moto_sqlite\menu.h
+
+1656489095 c:\users\alain\documents\github\moto_sqlite\base.h
+

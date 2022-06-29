@@ -1,7 +1,7 @@
 #ifndef CONSOLE_H_INCLUDED
 #define CONSOLE_H_INCLUDED
 
-#define _WIN32_WINNT 0x0501
+//#define _WIN32_WINNT 0x0501
 #define _WIN32_WINDOWS 0x600
 
 // Permet de compiler des fonctions qui marchent sous Visual C

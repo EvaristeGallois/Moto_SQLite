@@ -130,18 +130,17 @@ int supprimer_element(void)
     }
     else
     {
-        fprintf(stdout, "Nombre de champs.\n");
+        fprintf(stdout, "Nombre d'enregistrements.\n");
         printf("---->  %s \n", tab);
     }
 
     printf ("Entrez l'ID de l'élément à supprimer :");
     scanf("%d", &id);
     itoa(id,tab,10);
-    strcpy(commande,"DELETE FROM MOTOS WHERE ID=");
+    strcpy(commande,"DELETE FROM MOTOS WHERE ID = ");
     strcat(commande, tab);
     strcpy(sql, commande);
-    //sql = "INSERT INTO MOTOS (MARQUE, MODELE, TYPE, CYLINDREE) VALUES (tab,'T350','R','340')";
-
+    printf ("commande sql = %s\n", sql);
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
     if( rc != SQLITE_OK )
@@ -199,17 +198,44 @@ int reindexer_base(void)
     touche = _getch();
 }
 
-
-int ajouter_element(void)
+int renumeroter_ID_base(void)
 {
-    int rc, touche, cyl;
+    int rc, touche, id;
     char tab[80];
     char commande[200];
 
     clear_console();
     gotoxy (10,2);
 
-    /* Nombre de champs */
+    // Renumérotation du champs ID
+    strcpy(sql, "UPDATE MOTOS SET ID=(SELECT (COUNT(*) + 1) * 1 FROM MOTOS AS T1 WHERE T1.ID < MOTOS.ID);");
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+    if( rc != SQLITE_OK )
+    {
+        fprintf(stderr, "Erreur SQL: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    }
+    else
+    {
+        fprintf(stdout, "ID renumérotés.\n");
+    }
+
+    fprintf(stdout, "Appuyer sur une touche:\n");
+    touche = _getch();
+}
+
+
+int ajouter_element(void)
+{
+    int rc, touche, cyl;
+    char tab[80];
+    char commande[300];
+
+    clear_console();
+    gotoxy (10,2);
+
+    /* Nombre d'enregistrements */
     strcpy(sql, "SELECT COUNT(ID) FROM MOTOS");
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -220,7 +246,7 @@ int ajouter_element(void)
     }
     else
     {
-        fprintf(stdout, "Nombre de champs.\n");
+        fprintf(stdout, "Nombre d'enregistrements\n\n");
     }
 
     // Saisie de la marque

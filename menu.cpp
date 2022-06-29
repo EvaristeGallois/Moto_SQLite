@@ -8,7 +8,7 @@
 
 #include "console.h"
 
-static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Supprimer un élément","Réindexer","Quitter"};
+static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Supprimer un élément","Renuméroter ID","Quitter"};
 
 int Choix_menu(int pos_x, int pos_y)
 {
