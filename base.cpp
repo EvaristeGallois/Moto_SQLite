@@ -2,6 +2,9 @@
 #include "sqlite3.h"
 #include <windows.h>
 #include "console.h"
+#include <iostream>
+
+
 
 // Variables locales à la gestion de la base de données
 static sqlite3 *db;
@@ -10,15 +13,24 @@ static char sql[300];
 static char **table;
 
 
-static int callback(void *NotUsed, int argc, char **argv, char **azColName)
+extern "C" int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for(i=0; i<argc; i++)
     {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        printf("Callback ==> azColname='%s' = argv[%d]='%s'\n", azColName[i], i, argv[i] ? argv[i] : "NULL");
     }
     printf("\n");
     return 0;
+}
+extern "C" int callback_count(void* data, int counter, char **rows, char **azColName)
+{
+    int i;
+        if (counter == 1 && rows) {
+        *static_cast<int*>(data) = atoi(rows[0]);
+        return 0;
+    }
+    return 1;
 }
 
 /*
@@ -92,7 +104,7 @@ int creation_ouverture_bd(void)
           "MARQUE      TEXT    NOT NULL," \
           "MODELE      TEXT     NOT NULL," \
           "TYPE        CHAR(50)," \
-          "CYLINDREE   INT      NOT NULL );");
+          "CYLINDREE   INTEGER      NOT NULL );");
 
     /* Execution de la commande SQL */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -103,7 +115,7 @@ int creation_ouverture_bd(void)
     }
     else
     {
-        fprintf(stdout, "Table créée.\n");
+        fprintf(stdout, "Table créée si elle n'existe pas déjà.\n");
     }
 
     fprintf(stdout, "Appuyer sur une touche:\n");
@@ -114,15 +126,17 @@ int supprimer_element(void)
 {
     int rc, touche, id;
     char tab[80];
+    int compte = 0;
     char commande[200];
+    std::string sql_cde;
 
     clear_console();
     gotoxy (10,2);
 
     /* Nombre de champs */
-    strcpy(sql, "SELECT COUNT(ID) FROM MOTOS");
+    sql_cde = "SELECT COUNT(*) FROM MOTOS";
     /* Execute SQL statement */
-    rc = sqlite3_exec(db, sql, callback, &tab, &zErrMsg);
+    rc = sqlite3_exec(db, sql_cde.c_str(), callback_count, &compte, &zErrMsg);
     if( rc != SQLITE_OK )
     {
         fprintf(stderr, "Erreur SQL: %s\n", zErrMsg);
@@ -131,7 +145,7 @@ int supprimer_element(void)
     else
     {
         fprintf(stdout, "Nombre d'enregistrements.\n");
-        printf("---->  %s \n", tab);
+        printf("----> Compteur = '%d' \n", compte);
     }
 
     printf ("Entrez l'ID de l'élément à supprimer :");
@@ -152,7 +166,7 @@ int supprimer_element(void)
     {
         fprintf(stdout, "Elément supprimé. %s\n", tab);
     }
-
+    printf("Nb d'éléments modifié(s) : %d\n",sqlite3_changes(db));
     fprintf(stdout, "Appuyer sur une touche:\n");
     touche = _getch();
 }
