@@ -53,6 +53,8 @@ int creation_ouverture_bd(void)
 
 int supprimer_element(void)
 {
+  try
+  {
     int rc, touche, id, fld, nRows;
     char tab[80];
     int compte = 0;
@@ -77,74 +79,34 @@ int supprimer_element(void)
 
     fprintf(stdout, "Appuyer sur une touche:\n");
     touche = _getch();
-}
-
-int reindexer_base(void)
-{
-    int rc, touche, id;
-    char tab[80];
-    char commande[200];
-
-    clear_console();
-    gotoxy (10,2);
-/*
-        // Mise à jour de l'index
-    strcpy(sql, " UPDATE MOTOS SET ID = rowid");
-
-    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-    if( rc != SQLITE_OK )
+  }
+  catch (CppSQLite3Exception& e)
     {
-        fprintf(stderr, "Erreur SQL: %s\n", zErrMsg);
-        sqlite3_free(zErrMsg);
+        cerr << e.errorCode() << ":" << e.errorMessage() << endl;
     }
-    else
-    {
-        fprintf(stdout, "Index principal mis à jour.\n");
-    }
-
-    strcpy(sql, "OPTIMIZE TABLE MOTOS;");
-
-    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-    if( rc != SQLITE_OK )
-    {
-        fprintf(stderr, "\n\nErreur SQL: %s\n", zErrMsg);
-        sqlite3_free(zErrMsg);
-    }
-    else
-    {
-        fprintf(stdout, "Table optimisée %s\n");
-    }
-*/
-
-    fprintf(stdout, "Appuyer sur une touche:\n");
-    touche = _getch();
 }
 
 int renumeroter_ID_base(void)
 {
+  try
+  {
+
     int rc, touche, id;
     char tab[80];
     char commande[200];
 
     clear_console();
     gotoxy (10,2);
-/*
-    // Renumérotation du champs ID
-    strcpy(sql, "UPDATE MOTOS SET ID=(SELECT (COUNT(*) + 1) * 1 FROM MOTOS AS T1 WHERE T1.ID < MOTOS.ID);");
+       // Création de la table
+    db.execDML("UPDATE MOTOS SET ID=(SELECT (COUNT(*) + 1) * 1 FROM MOTOS AS T1 WHERE T1.ID < MOTOS.ID);");
 
-    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-    if( rc != SQLITE_OK )
-    {
-        fprintf(stderr, "Erreur SQL: %s\n", zErrMsg);
-        sqlite3_free(zErrMsg);
-    }
-    else
-    {
-        fprintf(stdout, "ID renumérotés.\n");
-    }
-*/
     fprintf(stdout, "Appuyer sur une touche:\n");
     touche = _getch();
+  }
+  catch (CppSQLite3Exception& e)
+    {
+        cerr << e.errorCode() << ":" << e.errorMessage() << endl;
+    }
 }
 
 
