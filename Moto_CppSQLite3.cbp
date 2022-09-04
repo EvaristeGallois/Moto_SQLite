@@ -60,10 +60,10 @@
 		<Linker>
 			<Add library="D:/Alain/Documents/Projets/SQLite 3-34/bin/Debug/libSQLite 3-34.a" />
 		</Linker>
-		<Unit filename="base.cpp">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="base.h" />
+		<Unit filename="CppSQLite3/CppSQLite3.cpp" />
+		<Unit filename="CppSQLite3/CppSQLite3.h" />
+		<Unit filename="base_CppSqlite3.cpp" />
+		<Unit filename="base_CppSqlite3.h" />
 		<Unit filename="console.cpp">
 			<Option compilerVar="CC" />
 		</Unit>

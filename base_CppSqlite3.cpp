@@ -1,3 +1,8 @@
+/*****************************************************
+*                                                    *
+*                 BASE_CPPSQLITE3.CPP                *
+*                                                    *
+*****************************************************/
 #include <stdio.h>
 #include <windows.h>
 #include "console.h"
@@ -14,8 +19,12 @@ static char sql[300];
 static char **table;
 
 const char* gszFile = "Motos.db";
+
 CppSQLite3DB db;
 
+/*******************************************
+*           creation_ouverture_bd          *
+*******************************************/
 int creation_ouverture_bd(void)
 {
   try
@@ -51,6 +60,9 @@ int creation_ouverture_bd(void)
     }
 }
 
+/*******************************************
+*             supprimer_element            *
+*******************************************/
 int supprimer_element(void)
 {
   try
@@ -86,6 +98,9 @@ int supprimer_element(void)
     }
 }
 
+/*******************************************
+*            renumeroter_ID_base           *
+*******************************************/
 int renumeroter_ID_base(void)
 {
   try
@@ -109,7 +124,9 @@ int renumeroter_ID_base(void)
     }
 }
 
-
+/*******************************************
+*              ajouter_element             *
+*******************************************/
 int ajouter_element(void)
 {
     int rc, touche, cyl;
@@ -154,11 +171,17 @@ int ajouter_element(void)
     touche = _getch();
 }
 
+/*******************************************
+*                 fermer_bd                *
+*******************************************/
 int fermer_bd(void)
 {
     //db.close(gszFile);
  }
 
+/*******************************************
+*                  lister_bd               *
+*******************************************/
 int lister_bd(void)
 {
     int touche, rc, i, j, k, l, m, mod, fld, row;
