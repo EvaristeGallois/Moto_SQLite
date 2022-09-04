@@ -1,3 +1,9 @@
+/*****************************************************
+*                                                    *
+*                      BASE.CPP                      *
+*                                                    *
+*****************************************************/
+
 #include <stdio.h>
 #include "sqlite3.h"
 #include <windows.h>
@@ -12,7 +18,9 @@ static char *zErrMsg = 0;
 static char sql[300];
 static char **table;
 
-
+/*******************************************
+*                  callback                *
+*******************************************/
 extern "C" int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
@@ -23,6 +31,10 @@ extern "C" int callback(void *NotUsed, int argc, char **argv, char **azColName)
     printf("\n");
     return 0;
 }
+
+/*******************************************
+*               callback_count             *
+*******************************************/
 extern "C" int callback_count(void* data, int counter, char **rows, char **azColName)
 {
     int i;
@@ -33,6 +45,9 @@ extern "C" int callback_count(void* data, int counter, char **rows, char **azCol
     return 1;
 }
 
+/*******************************************
+*            my_special_callback           *
+*******************************************/
 /*
  * Arguments:
  *
@@ -54,6 +69,9 @@ static int my_special_callback(void *unused, int count, char **data, char **colu
     return 0;
 }
 
+/*******************************************
+*                The_Callback              *
+*******************************************/
 int The_Callback(void *a_param, int argc, char **argv, char **column)
 {
     for (int i=0; i< argc; i++)
@@ -61,6 +79,10 @@ int The_Callback(void *a_param, int argc, char **argv, char **column)
     printf("\n");
     return 0;
 }
+
+/*******************************************
+*          creation_ouverture_bd           *
+*******************************************/
 int creation_ouverture_bd(void)
 {
     /*
@@ -75,7 +97,7 @@ int creation_ouverture_bd(void)
     gotoxy (10,2);
     printf("Version de SQLite: %s\n\n", sqlite3_libversion());
 
-// Test de l'existance de la base de données
+    // Test de l'existance de la base de données
     rc = sqlite3_open_v2 ("Motos.db", &db, SQLITE_OPEN_READWRITE, NULL);
     if( rc )
     {
@@ -122,6 +144,9 @@ int creation_ouverture_bd(void)
     touche = _getch();
 }
 
+/*******************************************
+*              supprimer_element           *
+*******************************************/
 int supprimer_element(void)
 {
     int rc, touche, id;
@@ -171,6 +196,9 @@ int supprimer_element(void)
     touche = _getch();
 }
 
+/*******************************************
+*               reindexer_base             *
+*******************************************/
 int reindexer_base(void)
 {
     int rc, touche, id;
@@ -180,7 +208,7 @@ int reindexer_base(void)
     clear_console();
     gotoxy (10,2);
 
-        // Mise à jour de l'index
+    // Mise à jour de l'index
     strcpy(sql, " UPDATE MOTOS SET ID = rowid");
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -212,6 +240,9 @@ int reindexer_base(void)
     touche = _getch();
 }
 
+/*******************************************
+*           renumeroter_ID_base            *
+*******************************************/
 int renumeroter_ID_base(void)
 {
     int rc, touche, id;
@@ -221,7 +252,7 @@ int renumeroter_ID_base(void)
     clear_console();
     gotoxy (10,2);
 
-    // Renumérotation du champs ID
+    // Renumérotation du champs ID de la base de données
     strcpy(sql, "UPDATE MOTOS SET ID=(SELECT (COUNT(*) + 1) * 1 FROM MOTOS AS T1 WHERE T1.ID < MOTOS.ID);");
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -239,7 +270,9 @@ int renumeroter_ID_base(void)
     touche = _getch();
 }
 
-
+/*******************************************
+*             ajouter_element              *
+*******************************************/
 int ajouter_element(void)
 {
     int rc, touche, cyl;
@@ -311,6 +344,9 @@ int ajouter_element(void)
     touche = _getch();
 }
 
+/*******************************************
+*                fermer_bd                 *
+*******************************************/
 int fermer_bd(void)
 {
     /* Libération de la mémoire */
@@ -319,6 +355,9 @@ int fermer_bd(void)
     sqlite3_close(db);
 }
 
+/*******************************************
+*                lister_bd                 *
+*******************************************/
 int lister_bd(void)
 {
    /* sqlite3 *db;
@@ -382,7 +421,7 @@ int lister_bd(void)
     printf("|\n");
     printf("%s",texte2);
 
-// Affichage du contenu de la base en colonnes
+    // Affichage du contenu de la base en colonnes
     for (i=1; i<nrows+1; i++)
     {
         strcpy(texte, "|");

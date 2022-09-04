@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <iostream>
 #include <windows.h>
 #include <conio.h>
 #include <locale> // Pour utilisation des caractères accentués
@@ -34,7 +33,6 @@ int main(int argc, char* argv[])
             case 0:
               // statements
               break;
-
             case 1:
               ret = creation_ouverture_bd();
               break;
@@ -51,12 +49,11 @@ int main(int argc, char* argv[])
               ret = renumeroter_ID_base();
               //ret = reindexer_base();
               break;
-
             case 6:
               quitter=1;
               break;
             default:
-                // default statements
+                //
                 break;
         }
     }

@@ -1,3 +1,8 @@
+/*****************************************************
+*                                                    *
+*                     CONSOLE.H                      *
+*                                                    *
+*****************************************************/
 #ifndef CONSOLE_H_INCLUDED
 #define CONSOLE_H_INCLUDED
 
@@ -15,7 +20,7 @@
 #include <stdarg.h>
 #include <time.h>
 
-//
+// Types et niveaux d'erreur
 typedef enum
 {
    Info,
@@ -48,7 +53,7 @@ extern "C"{
 #endif
 
 /********************************************************
-     Coordonnées et Handle des fenêtres
+*        Coordonnées et Handle des fenêtres             *
 ********************************************************/
 // Constructeurs
 COORD    coord					(int x, int y);
@@ -60,7 +65,7 @@ HANDLE	 GetConsoleW			(void);
 void	 debug					(int errLevel,char*msg);
 
 /********************************************************
-          Fonctions console
+*                  Fonctions console                    *
 ********************************************************/
 BOOL	resize_console			(int width, int height);
 BOOL	resize_console_max		(void);
