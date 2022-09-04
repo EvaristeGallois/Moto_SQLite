@@ -129,6 +129,8 @@ int renumeroter_ID_base(void)
 *******************************************/
 int ajouter_element(void)
 {
+   try
+  {
     int rc, touche, cyl;
     char tab[80];
     char commande[300];
@@ -169,6 +171,11 @@ int ajouter_element(void)
 
     fprintf(stdout, "Appuyer sur une touche:\n");
     touche = _getch();
+  }
+    catch (CppSQLite3Exception& e)
+    {
+        cerr << e.errorCode() << ":" << e.errorMessage() << endl;
+    }
 }
 
 /*******************************************
