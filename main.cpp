@@ -59,7 +59,9 @@ int main(int argc, char* argv[])
     }
     // Fermeture de la base de donnée
     ret = fermer_bd();
-    i = resize_console(120,50);
+    clear_console();
+    //i = resize_console(120,50);
+
 
    return 0;
 }

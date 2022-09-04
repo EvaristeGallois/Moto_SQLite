@@ -95,7 +95,7 @@ void	set_back_color			(int color);
 void	set_fore_color			(int color);
 
 /********************************************************
-            Gestion du curseur
+*            Gestion du curseur                         *
 ********************************************************/
 void	gotoxy					(int x, int y);
 int		wherex					(void);

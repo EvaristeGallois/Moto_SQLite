@@ -38,7 +38,6 @@ int Choix_menu(int pos_x, int pos_y)
             gotoxy(pos_x,pos_y+i);
             printf("%c\n", (i == curseur) ? '>':' ');
         }
-
     }
     show_cursor(1);
     return 0;

@@ -1,77 +1,86 @@
+/*****************************************************
+*                                                    *
+*                    CONSOLE.CPP                     *
+*                                                    *
+*****************************************************/
 #include "console.h"
 
-/**********************************************************
-*
-*	CONSTRUCTEURS (structures) :
-*
-**********************************************************/
-/*
-   coord fonction initialise une structure COORD
-*/
+/*****************************************************
+*	           INITIALISATION STRUCTURES               *
+*****************************************************/
+// initialise une structure COORD
 COORD coord(int x, int y)
 {
-COORD c;
+   COORD c;
+
    c.X=x;
    c.Y=y;
    return c;
 }
 
-/**********************************************************
-*
-*	STAFF CONSOLE/LIBRAIRIE
-*
-**********************************************************/
-/*
-GetStdout fonction
-Récupérer le handle pour les sorties sur la fenêtre console
-*/
+/*****************************************************
+*                                                    *
+*	                  GESTION HANDLE                   *
+*                                                    *
+*****************************************************/
+
+/*****************************************************
+*	                    GetStdout                      *
+*****************************************************/
+// Récupère le handle pour les sorties sur la fenêtre console
 HANDLE GetStdout()
 {
 static HANDLE h=NULL;
 	if (h==NULL){
 		h=GetStdHandle(STD_OUTPUT_HANDLE);
 		if (h == INVALID_HANDLE_VALUE)
-			debug(Fatal,"impossible obtenir std output handle");
+			debug(Fatal,(char *)"impossible obtenir std output handle");
 	}
 	return h;
 }
 
 
-/**********************************************************
-GetStdin fonction
-Récupérer le handle pour les entrées console
-*/
+/*****************************************************
+*	                    GetStdin                       *
+*****************************************************/
+// Récupère le handle pour les entrées console
 HANDLE GetStdin()
 {
 static HANDLE h=NULL;
 	if (h==NULL){
 		h=GetStdHandle(STD_INPUT_HANDLE);
 		if (h == INVALID_HANDLE_VALUE)
-			debug(Fatal,"impossible obtenir std input handle");
+			debug(Fatal, (char *)"impossible obtenir std input handle");
 	}
 	return h;
 }
 
-/**********************************************************
-GetConsoleW fonction
-Récupérer le handle pour la fenêtre console
-*/
+
+/*****************************************************
+*	                   GetConsoleW                     *
+*****************************************************/
+// Récupère le handle pour la fenêtre console
 HANDLE GetConsoleW()
 {
 static HANDLE h=NULL;
 	if (h==NULL){
 		h=GetConsoleWindow();
 		if (h == INVALID_HANDLE_VALUE)
-			debug(Fatal,"impossible obtenir handle fenêtre console");
+			debug(Fatal,(char *)"impossible obtenir handle fenêtre console");
 	}
 	return h;
 }
+/*****************************************************
+*                                                    *
+*	                 FONCTION DE DEBUG                 *
+*                                                    *
+*****************************************************/
 
-/**********************************************************
-debug fonction
-permet de tracer et gérer des erreurs.
-*/
-void debug(int errLevel,char*msg)
+/*****************************************************
+*	                       debug                       *
+*****************************************************/
+// Permet de tracer et gérer les erreurs.
+void debug(int errLevel, char *msg)
 {
 
 	gotoxy(0,0);
@@ -91,49 +100,47 @@ void debug(int errLevel,char*msg)
    // tirées du System Error Codes.
    // return GetLastError(); // unsigned int
 }
-/**********************************************************
-*
-*  SCREEN CONSOLE
-*
-**********************************************************/
-/*
-resize_console fonction
-Redimensionner la console (buffer des données et fenêtre
-affichée).
 
-width reçoit la largeur voulue pour la fenêtre
-height reçoit la hauteur voulue pour la fenêtre
-Fenêtre affichée et buffer des données ont la même taille
-(pour avoir un buffer plus grand il faut modifier un peu
-la fonction)
 
-Il y a une taille minimum qui est de 80 charactères en largeur
-et 25 caractères en hauteur
+/*****************************************************
+*                                                    *
+*        FONCTION DE DGESTION DE LA CONSOLE          *
+*                                                    *
+*****************************************************/
+/*****************************************************
+*	                  resize_console                   *
+*****************************************************/
+// Redimensionnement de la console (buffer des données et fenêtre
+//affichée).
+// width : largeur de la fenêtre
+// height  : hauteur de la fenêtre
+// Rq : la fenêtre affichée et le buffer des données ont
+// la même taille. (avoir un buffer plus grand implique de
+// modifier la fonction)
+//
+// Taille minimum : 80 caractères en largeur et 25 caractères en hauteur
+//
+// Taille maximum déterminée automatiquement en fonction
+// de la résolution de l'écran et de la taille des caractères
+// (sélectionnée par l'utilisateur avec une fenêtre console ouverte).
+//
+// La fonction retourne  TRUE (1) en cas de réussite et FALSE (0) en cas d'erreur
 
-Il y a également une taille maximum déterminée automatiquement
-selon la résolution de l'écran et la taille des caractères
-(sélectionnée directement par l'utilisateur avec une fenêtre
- console ouverte).
-
-La fonction retourne  TRUE (1) en cas de réussite et FALSE (0)
-en cas d'erreur
-*/
 BOOL resize_console(int width, int height)
 {
-COORD size, sizeMax;
-// les valeurs minimums au départ
-SMALL_RECT rBuffer={0,0,80,25};//Left,Top,Right,Bottom
-SMALL_RECT rWindow={0,0,1,1};
-
+    COORD size, sizeMax;
+    // Valeurs minimums au départ
+    SMALL_RECT rBuffer={0,0,80,25};//Left,Top,Right,Bottom
+    SMALL_RECT rWindow={0,0,1,1};
 
    // chercher la taille minimum ?
    // GetSystemMetric() SM_CXMIN et SM_CYMIN
-   // remarque : actuellement impossible gérer fontes et polices sous mingw
+   // remarque : actuellement impossible de gérer fontes et polices sous mingw
 
 	// réduire la fenêtre au minimum (possibilité de faire par étape
 	// pour éviter réduction brutale parfois visible)
    if(!SetConsoleWindowInfo(GetStdout(),TRUE, &rWindow )){
-      debug(Error,"[resize_console]SetConsoleWindowInfo()");
+      debug(Error,(char*)"[resize_console]SetConsoleWindowInfo()");
       return FALSE;
    }
 
@@ -144,7 +151,7 @@ SMALL_RECT rWindow={0,0,1,1};
    // Remarque :
    // la taille maximum n'est pas obligatoire pour le buffer.
    // Le buffer console peut exéder la taille de la fenêtre
-   // (mais pas l'inverse)
+   // mais pas l'inverse.
 
    sizeMax=GetLargestConsoleWindowSize(GetStdout());
 
@@ -155,7 +162,7 @@ SMALL_RECT rWindow={0,0,1,1};
             ((height>sizeMax.Y) ? sizeMax.Y : height);
 
    if (!SetConsoleScreenBufferSize(GetStdout(),size)){
-      debug(Error,"[resize_console]SetConsoleScreenBufferSize");
+      debug(Error,(char*)"[resize_console]SetConsoleScreenBufferSize");
       return FALSE;
    }
 
@@ -164,7 +171,7 @@ SMALL_RECT rWindow={0,0,1,1};
    rWindow.Bottom=size.Y-1;
 
    if(!SetConsoleWindowInfo(GetStdout(),TRUE, &rWindow )){
-      debug(Error,"[resize_console]SetConsoleWindowInfo");
+      debug(Error, (char*)"[resize_console]SetConsoleWindowInfo");
       return FALSE;
    }
    return TRUE;
@@ -179,9 +186,17 @@ l'utilisateurde la console.
 La fonction retourne TRUE (1) en cas de réussite et FALSE (0) en cas
 d'erreur
 */
+/*****************************************************
+*	                resize_console_max                 *
+*****************************************************/
+// Permet d'avoir une fenêtre console de taille maximum.
+// Cette taille dépend de la taille et de la police de caractères
+// sélectionnées par l'utilisateurde la console.
+// La fonction retourne TRUE (1) en cas de réussite et FALSE (0) en cas d'erreur
 BOOL resize_console_max()
 {
-COORD sizeMax;
+   COORD sizeMax;
+
    sizeMax = GetLargestConsoleWindowSize(GetStdout());
    return resize_console(sizeMax.X, sizeMax.Y);
 }
@@ -237,7 +252,7 @@ static SMALL_RECT bRect;
 int x,y;
 
 	if (!GetConsoleScreenBufferInfo(GetStdout(),&info)){
-		debug(Error,"[fill_console]GetConsoleScreenBufferInfo");
+		debug(Error, (char*)"[fill_console]GetConsoleScreenBufferInfo");
 		return;
 	}
 
@@ -269,7 +284,7 @@ int x,y;
                          coord(w,h),	 // sa taille
                          coord(0,0),	 // coin src départ
                          &bRect) )		 // rect de destination
-		debug(Error,"[fill_console]WriteConsoleOutput");
+		debug(Error, (char*)"[fill_console]WriteConsoleOutput");
 
 }
 
@@ -329,7 +344,7 @@ CONSOLE_SCREEN_BUFFER_INFO info;
 	set_color(color);
 	printf("SCREEN BUFFER INFO :\n");
 	if(!GetConsoleScreenBufferInfo(GetStdout(),&info))
-		debug(Error,"[test_screen_console_info]GetConsoleScreenBufferInfo");
+		debug(Error, (char*)"[test_screen_console_info]GetConsoleScreenBufferInfo");
 	else{
 		gotoxy(x,wherey());
 		printf("dwSize              : %d-%d		\n",info.dwSize.X,info.dwSize.Y);
