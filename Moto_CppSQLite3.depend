@@ -1,16 +1,17 @@
 # depslib dependency file v1.0
-1662295878 source:c:\users\alain\documents\github\moto_sqlite\console.cpp
+1662398900 source:c:\users\alain\documents\github\moto_sqlite\console.cpp
 	"console.h"
 
-1662295457 c:\users\alain\documents\github\moto_sqlite\console.h
+1662450990 c:\users\alain\documents\github\moto_sqlite\console.h
 	<windows.h>
+	<string>
 	<conio.h>
 	<stdio.h>
 	<stdlib.h>
 	<stdarg.h>
 	<time.h>
 
-1662291794 source:c:\users\alain\documents\github\moto_sqlite\main.cpp
+1662296040 source:c:\users\alain\documents\github\moto_sqlite\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -28,14 +29,14 @@
 1662294034 source:c:\users\alain\documents\github\moto_sqlite\menu.cpp
 	"console.h"
 
-1662293270 source:c:\users\alain\documents\github\moto_sqlite\base_cppsqlite3.cpp
+1662399099 source:c:\users\alain\documents\github\moto_sqlite\base_cppsqlite3.cpp
 	<stdio.h>
 	<windows.h>
 	"console.h"
 	"CppSQLite3/CppSQLite3.h"
 	<iostream>
 
-1639148419 c:\users\alain\documents\github\moto_sqlite\cppsqlite3\cppsqlite3.h
+1662400133 c:\users\alain\documents\github\moto_sqlite\cppsqlite3\cppsqlite3.h
 	"sqlite3.h"
 	<cstdio>
 	<cstring>

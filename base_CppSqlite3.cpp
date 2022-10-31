@@ -183,8 +183,8 @@ int ajouter_element(void)
 *******************************************/
 int fermer_bd(void)
 {
-    //db.close(gszFile);
- }
+    db.close();
+}
 
 /*******************************************
 *                  lister_bd               *
