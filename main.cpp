@@ -20,12 +20,13 @@
 int main(int argc, char* argv[])
 {
     int menu_choisi, ret, i, quitter=0;
+    bool quiter = false;
 
     setlocale(LC_CTYPE, "fra"); // Initialisation du jeu de caractères accentués Français
     // redimensionnement de la console
     i = resize_console(140,50);
     //gestion du menu
-    while(quitter==0)
+    while(quitter==false)
     {
         menu_choisi = Choix_menu(10,10);
         switch (menu_choisi)
@@ -50,7 +51,7 @@ int main(int argc, char* argv[])
               //ret = reindexer_base();
               break;
             case 6:
-              quitter=1;
+              quitter=true;
               break;
             default:
                 //
