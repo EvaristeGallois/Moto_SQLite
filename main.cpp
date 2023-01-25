@@ -61,7 +61,5 @@ int main(int argc, char* argv[])
     ret = fermer_bd();
     clear_console();
     //i = resize_console(120,50);
-
-
    return 0;
 }
