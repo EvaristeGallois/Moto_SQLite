@@ -17,6 +17,7 @@ int Choix_menu(int pos_x, int pos_y)
     int touche; // Touche enfoncée : Flêche haute, Flêche basse
     show_cursor(0);
     clear_console();
+    // Affichage du menu
     for (i = 0; i < nb_elements; i++)
     {
         gotoxy(pos_x,pos_y+i);
