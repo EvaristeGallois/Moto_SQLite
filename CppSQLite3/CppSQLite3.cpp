@@ -54,7 +54,7 @@ int sqlite3_decode_binary(const unsigned char *in, unsigned char *out);
 ////////////////////////////////////////////////////////////////////////////////
 
 CppSQLite3Exception::CppSQLite3Exception(const int nErrCode,
-      char* szErrMess,
+      char const *szErrMess,
       bool bDeleteMsg/*=true*/) :
    mnErrCode(nErrCode)
 {
@@ -231,9 +231,8 @@ void CppSQLite3Binary::setEncoded(const unsigned char* pBuf)
 
    if (!mpBuf)
    {
-      throw CppSQLite3Exception(CPPSQLITE_ERROR,
-                                "Cannot allocate memory",
-                                DONT_DELETE_MSG);
+      char const *mes = "Cannot allocate memory"; // valide et sécurisé aussi bien en C qu'en C++.
+      throw CppSQLite3Exception(CPPSQLITE_ERROR, mes, DONT_DELETE_MSG);
    }
 
    memcpy(mpBuf, pBuf, mnBufferLen);

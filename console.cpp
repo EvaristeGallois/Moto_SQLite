@@ -57,7 +57,7 @@ HANDLE GetStdout()
       h=GetStdHandle(STD_OUTPUT_HANDLE);
       if (h == INVALID_HANDLE_VALUE)
       {
-         char* data = "impossible d'obtenir std output handle";
+         char *data = "impossible d'obtenir std output handle";
          debug(Fatal,data);
       }
       return h;
@@ -113,7 +113,7 @@ HANDLE GetConsoleW()
 // venant du System Error Codes.
 // return GetLastError(); (type  : unsigned int
 
-void debug(int errLevel, char*msg)
+void debug(int errLevel, char *msg)
 {
    gotoxy(0,0);
    switch(errLevel)
@@ -254,7 +254,7 @@ COORD screen_size()
 
 /*-----------------------------------------------------*/
 /*                                                     */
-/*                     fill-console                    */
+/*                     fill_console                    */
 /*                                                     */
 /*-----------------------------------------------------*/
 // Remplit la fenêtre avec le caractère et les couleurs

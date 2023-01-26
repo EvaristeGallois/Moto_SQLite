@@ -62,7 +62,7 @@ typedef struct
    CHAR_INFO*dat; // Les données
 }CHBITMAP;
 
-// Couleurs des lettres sur la cosole
+// Couleurs des lettres sur la console
 typedef enum {NOIR, BLEU_FONCE, VERT, CYAN, ROUGE, VIOLET, JAUNE, BLANC, GRIS_CLAIR, BLEU, VERT_CLAIR, BLEU_CLAIR, ROUGE_CLAIR, MAGENTA, JAUNE_CLAIR, BLANC2} T_COLOR_CHAR;
 //0=noir, 1=bleu foncé, 2=vert, 3=cyan, 4=rouge; 5=violet, 6=jaune, 7=blanc, 8=gris clair, 9=bleu, 10=vert clair, 11=bleu clair, 12=rouge clair, 13=magenta, 14=jaune clair,15=blanc2, 16=noir sur fond bleu
 
