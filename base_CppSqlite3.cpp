@@ -6,9 +6,13 @@
 #include <stdio.h>
 #include <windows.h>
 #include "console.h"
-
+#include <string.h> // Penser à inclure string.h pour strchr()
 #include "CppSQLite3/CppSQLite3.h"
 #include <iostream>
+
+
+//#include <stdlib.h>
+
 
 using namespace std;
 
@@ -16,11 +20,80 @@ using namespace std;
 
 static char *zErrMsg = 0;
 static char sql[300];
-static char **table;
 
 const char* gszFile = "Motos.db";
 
 CppSQLite3DB db;
+
+/*******************************************
+*             longueur_max_champ           *
+*******************************************/
+// Retourne la longueur maximum des champs
+// d'une colonne afin de déterminer la largeur
+// maximum pour l'affichage
+int longueur_max_champ(CppSQLite3Table &t, int num_col)
+{
+   int lg;
+   int longueur_max = 0;
+   for (int row = 0; row < t.numRows(); row++)
+   {
+      t.setRow(row);
+      if (!t.fieldIsNull(num_col))
+      {
+         lg = strlen(t.fieldValue(num_col));
+         if (lg > longueur_max)
+         {
+            longueur_max = lg;
+         }
+      }
+   }
+   return longueur_max;
+}
+
+/*******************************************
+*                viderBuffer               *
+*******************************************/
+// Vide le buffer de saisie de caractère
+void viderBuffer()
+{
+   int c = 0;
+   while (c != '\n' && c != EOF)
+   {
+      c = getchar();
+   }
+}
+
+
+/*******************************************
+*                   lire                   *
+*******************************************/
+// Lit un nombre maximum saisit au clavier
+int lire(char *chaine, int longueur)
+{
+   char *positionEntree = NULL;
+
+   if (fgets(chaine, longueur, stdin) != NULL)
+   {
+      positionEntree = strchr(chaine, '\n');
+      if (positionEntree != NULL)
+      {
+         *positionEntree = '\0';
+      }
+      else
+      {
+         viderBuffer();
+      }
+      if( strlen(chaine)<=0 || chaine[0]== '\n' || chaine[0] == '\n')
+         return 0;
+      return 1;
+   }
+   else
+   {
+      viderBuffer();
+      return 0;
+   }
+}
+
 
 /*******************************************
 *           creation_ouverture_bd          *
@@ -130,43 +203,37 @@ int ajouter_element(void)
 {
    try
    {
-      int rc, touche, cyl;
-      char tab[80];
+      int touche;
+      //char tab[80];
+      char *tab = new char[50];
+      char *liste_saisie[4] = {"Entrez la marque :","Entrez le modèle :","Entrez le type :","Entrez la cylindrée :"};
+      int nb_champs = 4;
       char commande[300];
 
       clear_console();
       gotoxy (10,2);
-
       cout << db.execScalar("SELECT COUNT(*) FROM MOTOS;") << " enregistrements dans la table MOTOS " << endl;
+      sprintf (commande, "%s", "INSERT INTO MOTOS (MARQUE,MODELE,TYPE,CYLINDREE) VALUES ('");
+      for (int i = 0; i<nb_champs; i++)
+      {
+         printf ("\n%s",liste_saisie[i]);
+         if (lire(tab, 15) == 1)
+         {
+            sprintf (commande, "%s%s%s", commande, tab, "','");
+         }
+         else
+         {
+            printf ("\nErreur dans la saisie\n");
+            fprintf(stdout, "Appuyer sur une touche:\n");
+            touche = _getch();
+            return 0;
+         }
+      }
+      int l = strlen(commande);
+      commande[l-2]=')';
+      commande[l-1]=';';
 
-      // Saisie de la marque
-      printf ("Entrez la marque :");
-      scanf("%s", &tab);
-      //scanf("Marque : %80s", tab);
-      strcpy(commande,"INSERT INTO MOTOS (MARQUE, MODELE, TYPE, CYLINDREE) VALUES ('");
-      strcat(commande, tab);
-      strcat(commande,"','");
-
-      // Saisie du modèle
-      printf ("\nEntrez le modèle :");
-      scanf("%s", &tab);
-      strcat(commande, tab);
-      strcat(commande,"','");
-
-      // Saisie du type
-      printf ("\nEntrez le type :");
-      scanf("%s", &tab);
-      strcat(commande, tab);
-      strcat(commande,"','");
-
-      // Saisie de la cylindrée
-      printf ("\nEntrez la cylindrée :");
-      scanf("%s", &tab);
-      strcat(commande, tab);
-      strcat(commande,"')");
-      strcpy(sql, commande);
-
-      int nRows = db.execDML(sql);
+      int nRows = db.execDML(commande);
 
       fprintf(stdout, "Appuyer sur une touche:\n");
       touche = _getch();
@@ -175,6 +242,7 @@ int ajouter_element(void)
    {
       cerr << e.errorCode() << ":" << e.errorMessage() << endl;
    }
+   return 1;
 }
 
 /*******************************************
@@ -183,56 +251,65 @@ int ajouter_element(void)
 int fermer_bd(void)
 {
    db.close();
+   return 1;
 }
 
 /*******************************************
-*                  lister_bd               *
+*                 lister_bd                *
 *******************************************/
 int lister_bd(void)
 {
-   int touche, rc, i, j, k, l, m, mod, fld, row;
-   int nrows, ncols,maxcol;
-   char texte[200]="";
-   char texte2[200]="";
+   int touche, i, k, lg, m, mod, fld, row;
    int lig = 2, col = 10;
-   string tex, tex2, ch;
+   string tex, tex2, tex3, ch;
+   int espace[20];
+   int lgmax;
 
    clear_console();
-   gotoxy (col,lig++);
-
    CppSQLite3Table t = db.getTable("SELECT ID, MARQUE, MODELE, TYPE, CYLINDREE FROM MOTOS;");
 
-   tex2 = "+";
-   for (i=0; i<t.numFields()-1; i++)
-   {
-      tex2 += "--------------+";
-   }
-   tex2 += "--------------+";
-   gotoxy (col,lig++);
-   cout << tex2 << endl;
-   maxcol = 14;
-   gotoxy (col,lig++);
+   // Calcul des espaces max pour les différentes colonnes
+   // et stockage dans le tableau espace[]
+   // et construction de la ligne séparatrice
+   tex3.assign("+");
    for (fld = 0; fld < t.numFields(); fld++)
    {
-      tex = "|";
-      j = strlen(t.fieldName(fld));
-      k = maxcol - j;
-      l = k / 2;
-      mod = k % 2;
-      for (m=0; m<(l+mod); m++)
-         tex +=" ";
-      tex += t.fieldName(fld);
-      for (m=0; m<l; m++)
-         tex += " ";
-      cout << tex;
-
-      //cout << t.fieldName(fld) << "|";
+      lg = strlen(t.fieldName(fld));
+      for (row = 0; row < t.numRows(); row++)
+      {
+         lgmax = longueur_max_champ(t, fld);
+      }
+      if (lg > lgmax)
+      {
+         lgmax = lg;
+      }
+      espace[fld] = lgmax;
+      for (i=0; i < lgmax + 2; i++)
+         tex3.append("-");
+      tex3.append("+");
    }
-   cout << "|" << endl;
    gotoxy (col,lig++);
-   cout << tex2 << endl;
+   cout << tex3 ;
+   gotoxy (col,lig++);
+   tex = "|";
+   for (fld = 0; fld < t.numFields(); fld++)
+   {
+      lg = strlen(t.fieldName(fld));
+      k =espace[fld] + 2 - lg;
+      lg = k / 2;
+      mod = k % 2;
+      for (m = 0; m < (lg + mod); m++)
+         tex += " ";
+      tex += t.fieldName(fld);
+      for (m = 0; m < lg; m++)
+         tex += " ";
+      tex += "|";
+   }
+   cout << tex;
+   gotoxy (col,lig++);
+   cout << tex3 ;
 
-   for (int row = 0; row < t.numRows(); row++)
+   for (row = 0; row < t.numRows(); row++)
    {
       gotoxy (col,lig++);
       cout << "|";
@@ -241,24 +318,27 @@ int lister_bd(void)
       {
          if (!t.fieldIsNull(fld))
          {
-            l = strlen(t.fieldValue(fld));
+            lg = strlen(t.fieldValue(fld));
             cout << " " << t.fieldValue(fld);
-            for (m=1; m<maxcol-l; m++)
-               cout << " ";
-            cout << "|";
          }
          else
          {
-            cout << "NULL" << "|";
+            lg = strlen("NULL");
+            cout << " " << "NULL";
          }
+         for (m=0; m < espace[fld] - lg + 1; m++)
+            cout << " ";
+         cout << "|";
       }
       cout << endl;
    }
    gotoxy (col,lig++);
-   cout << tex2 << endl;
+   cout << tex3 << endl;
 
    fprintf(stdout, "Appuyer sur une touche:\n");
    touche = _getch();
 
+   return 1;
 }
+
 

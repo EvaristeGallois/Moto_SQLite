@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<results version="2">
+    <cppcheck version="2.9" />
+    <errors>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;CppSQLite3Query::mpDB&apos; is not initialized in the constructor." verbose="Member variable &apos;CppSQLite3Query::mpDB&apos; is not initialized in the constructor." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="325" column="18" />
+            <symbol>CppSQLite3Query::mpDB</symbol>
+        </error>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;CppSQLite3Query::mpDB&apos; is not initialized in the copy constructor." verbose="Member variable &apos;CppSQLite3Query::mpDB&apos; is not initialized in the copy constructor." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="334" column="18" />
+            <symbol>CppSQLite3Query::mpDB</symbol>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="227" column="27" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="230" column="12" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="247" column="29" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="296" column="12" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="630" column="33" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="645" column="42" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="984" column="42" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="993" column="39" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1019" column="39" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1070" column="34" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1158" column="42" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1174" column="42" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1243" column="39" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1329" column="39" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1409" column="33" />
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;szError&apos; is assigned a value that is never used." verbose="Variable &apos;szError&apos; is assigned a value that is never used." cwe="563" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="971" column="23" />
+            <symbol>szError</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;nn&apos; is assigned a value that is never used." verbose="Variable &apos;nn&apos; is assigned a value that is never used." cwe="563" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1101" column="11" />
+            <symbol>nn</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;sz1&apos; is assigned a value that is never used." verbose="Variable &apos;sz1&apos; is assigned a value that is never used." cwe="563" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1102" column="20" />
+            <symbol>sz1</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;sz2&apos; is assigned a value that is never used." verbose="Variable &apos;sz2&apos; is assigned a value that is never used." cwe="563" file0="CppSQLite3/CppSQLite3.cpp">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1103" column="20" />
+            <symbol>sz2</symbol>
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="CppSQLite3\sqlite3.h" line="131" column="0" />
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="CppSQLite3\sqlite3.h" line="132" column="0" />
+        </error>
+        <error id="syntaxError" severity="error" msg="Code &apos;classCppSQLite3Exception{&apos; is invalid C code. Use --std or --language to configure the language." verbose="Code &apos;classCppSQLite3Exception{&apos; is invalid C code. Use --std or --language to configure the language." file0="CppSQLite3/CppSQLite3.h">
+            <location file="CppSQLite3\CppSQLite3.h" line="43" column="1" />
+        </error>
+        <error id="invalidscanf" severity="warning" msg="scanf() without field width limits can crash with huge input data." verbose='scanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' cwe="119" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="166" column="7" />
+        </error>
+        <error id="invalidscanf" severity="warning" msg="scanf() without field width limits can crash with huge input data." verbose='scanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' cwe="119" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="174" column="7" />
+        </error>
+        <error id="invalidscanf" severity="warning" msg="scanf() without field width limits can crash with huge input data." verbose='scanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' cwe="119" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="180" column="7" />
+        </error>
+        <error id="invalidscanf" severity="warning" msg="scanf() without field width limits can crash with huge input data." verbose='scanf() without field width limits can crash with huge input data. Add a field width specifier to fix this problem.\012\012Sample program that can crash:\012\012#include &lt;stdio.h&gt;\012int main()\012{\012    char c[5];\012    scanf(&quot;%s&quot;, c);\012    return 0;\012}\012\012Typing in 5 or more characters may make the program crash. The correct usage here is &apos;scanf(&quot;%4s&quot;, c);&apos;, as the maximum field width does not include the terminating null byte.\012Source: http://linux.die.net/man/3/scanf\012Source: http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/stdio/scanf.c' cwe="119" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="186" column="7" />
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;k&apos; can be reduced." verbose="The scope of the variable &apos;k&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="216" column="26" />
+            <symbol>k</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;mod&apos; can be reduced." verbose="The scope of the variable &apos;mod&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="216" column="35" />
+            <symbol>mod</symbol>
+        </error>
+        <error id="shadowVariable" severity="style" msg="Local variable &apos;row&apos; shadows outer variable" verbose="Local variable &apos;row&apos; shadows outer variable" cwe="398" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="270" column="13" info="Shadow variable" />
+            <location file="base_CppSqlite3.cpp" line="216" column="45" info="Shadowed declaration" />
+            <symbol>row</symbol>
+        </error>
+        <error id="uninitvar" severity="warning" msg="Uninitialized variable: espace" verbose="Uninitialized variable: espace" cwe="457" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="256" column="10" />
+            <location file="base_CppSqlite3.cpp" line="232" column="22" info="Assuming condition is false" />
+            <symbol>espace</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: x" verbose="Unused variable: x" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="30" column="27" />
+            <symbol>x</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: y" verbose="Unused variable: y" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="30" column="30" />
+            <symbol>y</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: sql_cde" verbose="Unused variable: sql_cde" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="96" column="19" />
+            <symbol>sql_cde</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: rc" verbose="Unused variable: rc" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="155" column="11" />
+            <symbol>rc</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: cyl" verbose="Unused variable: cyl" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="155" column="23" />
+            <symbol>cyl</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;nRows&apos; is assigned a value that is never used." verbose="Variable &apos;nRows&apos; is assigned a value that is never used." cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="191" column="11" />
+            <symbol>nRows</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;texte&apos; is assigned a value that is never used." verbose="Variable &apos;texte&apos; is assigned a value that is never used." cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="218" column="19" />
+            <symbol>texte</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;texte2&apos; is assigned a value that is never used." verbose="Variable &apos;texte2&apos; is assigned a value that is never used." cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="219" column="20" />
+            <symbol>texte2</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;touche&apos; is assigned a value that is never used." verbose="Variable &apos;touche&apos; is assigned a value that is never used." cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="298" column="11" />
+            <symbol>touche</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: rc" verbose="Unused variable: rc" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="216" column="16" />
+            <symbol>rc</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: x" verbose="Unused variable: x" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="216" column="50" />
+            <symbol>x</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: y" verbose="Unused variable: y" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="216" column="53" />
+            <symbol>y</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: nrows" verbose="Unused variable: nrows" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="217" column="8" />
+            <symbol>nrows</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: ncols" verbose="Unused variable: ncols" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="217" column="15" />
+            <symbol>ncols</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: maxcol" verbose="Unused variable: maxcol" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="217" column="21" />
+            <symbol>maxcol</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: tex2" verbose="Unused variable: tex2" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="221" column="16" />
+            <symbol>tex2</symbol>
+        </error>
+        <error id="unusedVariable" severity="style" msg="Unused variable: ch" verbose="Unused variable: ch" cwe="563" file0="base_CppSqlite3.cpp">
+            <location file="base_CppSqlite3.cpp" line="221" column="28" />
+            <symbol>ch</symbol>
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="283" column="11" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="646" column="16" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="795" column="17" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="908" column="10" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="911" column="16" />
+        </error>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="1111" column="20" />
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;x&apos; can be reduced." verbose="The scope of the variable &apos;x&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="270" column="8" />
+            <symbol>x</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;y&apos; can be reduced." verbose="The scope of the variable &apos;y&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="270" column="10" />
+            <symbol>y</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;i&apos; can be reduced." verbose="The scope of the variable &apos;i&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="957" column="8" />
+            <symbol>i</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;j&apos; can be reduced." verbose="The scope of the variable &apos;j&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="957" column="10" />
+            <symbol>j</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;x&apos; can be reduced." verbose="The scope of the variable &apos;x&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="1018" column="8" />
+            <symbol>x</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;y&apos; can be reduced." verbose="The scope of the variable &apos;y&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="1018" column="10" />
+            <symbol>y</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;sx&apos; can be reduced." verbose="The scope of the variable &apos;sx&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="1018" column="12" />
+            <symbol>sx</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;sy&apos; can be reduced." verbose="The scope of the variable &apos;sy&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="console.cpp">
+            <location file="console.cpp" line="1018" column="15" />
+            <symbol>sy</symbol>
+        </error>
+        <error id="syntaxError" severity="error" msg="Code &apos;using namespace std&apos; is invalid C code. Use --std or --language to configure the language." verbose="Code &apos;using namespace std&apos; is invalid C code. Use --std or --language to configure the language." file0="console.h">
+            <location file="console.h" line="34" column="1" />
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;menu_choisi&apos; can be reduced." verbose="The scope of the variable &apos;menu_choisi&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="main.cpp">
+            <location file="main.cpp" line="22" column="9" />
+            <symbol>menu_choisi</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;ret&apos; is assigned a value that is never used." verbose="Variable &apos;ret&apos; is assigned a value that is never used." cwe="563" file0="main.cpp">
+            <location file="main.cpp" line="62" column="9" />
+            <symbol>ret</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;quiter&apos; is assigned a value that is never used." verbose="Variable &apos;quiter&apos; is assigned a value that is never used." cwe="563" file0="main.cpp">
+            <location file="main.cpp" line="23" column="10" />
+            <symbol>quiter</symbol>
+        </error>
+        <error id="variableScope" severity="style" msg="The scope of the variable &apos;touche&apos; can be reduced." verbose="The scope of the variable &apos;touche&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:\012void f(int x)\012{\012    int i = 0;\012    if (x) {\012        // it&apos;s safe to move &apos;int i = 0;&apos; here\012        for (int n = 0; n &lt; 10; ++n) {\012            // it is possible but not safe to move &apos;int i = 0;&apos; here\012            do_something(&amp;i);\012        }\012    }\012}\012When you see this message it is always safe to reduce the variable scope 1 level." cwe="398" file0="menu.cpp">
+            <location file="menu.cpp" line="17" column="9" />
+            <symbol>touche</symbol>
+        </error>
+        <error id="toomanyconfigs" severity="information" msg="Too many #ifdef configurations - cppcheck only checks 12 of 14 configurations. Use --force to check all configurations." verbose="The checking of the file will be interrupted because there are too many #ifdef configurations. Checking of all #ifdef configurations can be forced by --force command line option or from GUI preferences. However that may increase the checking time." cwe="398">
+            <location file="sqlite3.h" line="0" column="0" />
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="sqlite3.h" line="268" column="0" />
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="sqlite3.h" line="272" column="0" />
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE;SQLITE_UINT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE;SQLITE_UINT64_TYPE&apos; since the value of &apos;SQLITE_INT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="sqlite3.h" line="268" column="0" />
+        </error>
+        <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration &apos;SQLITE_INT64_TYPE;SQLITE_UINT64_TYPE&apos; since the value of &apos;SQLITE_UINT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly." verbose="Skipping configuration &apos;SQLITE_INT64_TYPE;SQLITE_UINT64_TYPE&apos; since the value of &apos;SQLITE_UINT64_TYPE&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.">
+            <location file="sqlite3.h" line="270" column="0" />
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;IsAutoCommitOn&apos; is never used." verbose="The function &apos;IsAutoCommitOn&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1416" column="0" />
+            <symbol>IsAutoCommitOn</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;compileStatement&apos; is never used." verbose="The function &apos;compileStatement&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1268" column="0" />
+            <symbol>compileStatement</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;fieldDeclType&apos; is never used." verbose="The function &apos;fieldDeclType&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="572" column="0" />
+            <symbol>fieldDeclType</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;format&apos; is never used." verbose="The function &apos;format&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="187" column="0" />
+            <symbol>format</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getBinaryLength&apos; is never used." verbose="The function &apos;getBinaryLength&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="279" column="0" />
+            <symbol>getBinaryLength</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getEncoded&apos; is never used." verbose="The function &apos;getEncoded&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="243" column="0" />
+            <symbol>getEncoded</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;lastRowId&apos; is never used." verbose="The function &apos;lastRowId&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1372" column="0" />
+            <symbol>lastRowId</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;nextRow&apos; is never used." verbose="The function &apos;nextRow&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="609" column="0" />
+            <symbol>nextRow</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;reset&apos; is never used." verbose="The function &apos;reset&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="1149" column="0" />
+            <symbol>reset</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setBinary&apos; is never used." verbose="The function &apos;setBinary&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="216" column="0" />
+            <symbol>setBinary</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setEncoded&apos; is never used." verbose="The function &apos;setEncoded&apos; is never used." cwe="561">
+            <location file="CppSQLite3\CppSQLite3.cpp" line="223" column="0" />
+            <symbol>setEncoded</symbol>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config." />
+    </errors>
+</results>
