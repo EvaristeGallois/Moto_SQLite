@@ -793,16 +793,14 @@ int edit_line(char *line, int long_max, int pos_x, int pos_y)
    int lg, cur_pos_x;
    char c='a';
    char *text = (char*)malloc(long_max + 1);
-
    if(text==NULL) // Erreur malloc
       exit(1);
-   cur_pos_x = pos_x;
-   strcpy(text, line);
-   gotoxy(cur_pos_x, pos_y);
-   printf("%s", text);
 
+   strcpy(text, line);
+   gotoxy(pos_x, pos_y);
+   printf("%s", text);
    lg=strlen(text);
-   cur_pos_x = cur_pos_x + lg;
+   cur_pos_x = pos_x + lg;
    gotoxy(cur_pos_x, pos_y);
    show_cursor(TRUE);
 

@@ -9,11 +9,11 @@
 // sur la console
 #include "console.h"
 
-static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Supprimer un élément","Renuméroter ID","Quitter"};
+static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Editer un élément","Supprimer un élément","Renuméroter ID","Quitter"};
 
 int Choix_menu(int pos_x, int pos_y)
 {
-    int nb_elements = 6;
+    int nb_elements = 7;
     int i,curseur = 0;
     int touche; // Touche enfoncée : Flêche haute, Flêche basse
     show_cursor(0);

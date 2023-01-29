@@ -7,6 +7,8 @@
 #include <windows.h>
 #include "console.h"
 #include <string.h> // Penser à inclure string.h pour strchr()
+
+#include <vector>
 #include "CppSQLite3.h"
 #include <iostream>
 
@@ -209,15 +211,18 @@ int ajouter_element(void)
       char *liste_saisie[4] = {"Entrez la marque :","Entrez le modèle :","Entrez le type :","Entrez la cylindrée :"};
       int nb_champs = 4;
       char commande[300];
-
+      int x = 10, y = 3;
       clear_console();
-      gotoxy (10,2);
+      gotoxy (10,1);
       cout << db.execScalar("SELECT COUNT(*) FROM MOTOS;") << " enregistrements dans la table MOTOS " << endl;
       sprintf (commande, "%s", "INSERT INTO MOTOS (MARQUE,MODELE,TYPE,CYLINDREE) VALUES ('");
       for (int i = 0; i<nb_champs; i++)
       {
-         printf ("\n%s",liste_saisie[i]);
-         if (lire(tab, 15) == 1)
+         strcpy(tab,"");
+         gotoxy (x,y);
+         printf ("%s",liste_saisie[i]);
+         if (edit_line(tab, 20, x+22, y) == 0)
+            //if (lire(tab, 15) == 1)
          {
             sprintf (commande, "%s%s%s", commande, tab, "','");
          }
@@ -228,13 +233,14 @@ int ajouter_element(void)
             touche = _getch();
             return 0;
          }
+         y++;
       }
       int l = strlen(commande);
       commande[l-2]=')';
       commande[l-1]=';';
 
       int nRows = db.execDML(commande);
-
+      gotoxy (x,y++);
       fprintf(stdout, "Appuyer sur une touche:\n");
       touche = _getch();
    }
@@ -244,6 +250,94 @@ int ajouter_element(void)
    }
    return 1;
 }
+
+
+/*******************************************
+*              editer_element              *
+*******************************************/
+int editer_element(void)
+{
+   try
+   {
+      int touche, nRows;
+      char ID_char[4];
+      char *tab = new char[50];
+      char *liste_saisie[4] = {"Entrez la marque :","Entrez le modèle :","Entrez le type :","Entrez la cylindrée :"};
+      int nb_champs = 4;
+      string commande;
+      int x = 10, y = 3, id;
+      string chaine;
+      vector<string> tableau;
+
+      clear_console();
+      // Choix de l'ID de l'élément à éditer
+      gotoxy(x,y);
+      printf ("Entrez l'ID de l'élément à supprimer : ");
+      show_cursor(true);
+      scanf("%d", &id);
+      itoa(id,ID_char,10);
+
+      commande = "SELECT MARQUE, MODELE, TYPE, CYLINDREE FROM MOTOS WHERE ID = ";
+      commande.append(ID_char);
+      CppSQLite3Query q = db.execQuery(commande.c_str());
+      //CppSQLite3Query q =
+      //db.execQuery(commande);
+      while (!q.eof())
+      {
+         for (int fld = 0; fld < q.numFields(); fld++)
+         {
+            if (!q.fieldIsNull(fld))
+            {
+               chaine.assign(q.fieldValue(fld));
+               tableau.emplace_back(chaine);
+            }
+            else
+            {
+               tableau.emplace_back("NULL");
+            }
+         }
+         q.nextRow();
+      }
+
+      y++;
+      for (int i = 0; i<tableau.size(); i++)
+      {
+         strcpy(tab,tableau[i].c_str());
+         gotoxy (x,y);
+         printf ("%s",liste_saisie[i]);
+         if (edit_line(tab, 20, x+22, y) == 0)
+            //if (lire(tab, 15) == 1)
+         {
+            tableau[i] = tab;
+            //sprintf (commande, "%s%s%s", commande, tab, "','");
+         }
+         else
+         {
+            printf ("\nErreur dans la saisie\n");
+            fprintf(stdout, "Appuyer sur une touche:\n");
+            touche = _getch();
+            return 0;
+         }
+         y++;
+      }
+
+      commande = "UPDATE MOTOS SET MARQUE='" + tableau[0] + "', MODELE='" + tableau[1] + "', TYPE='";
+      commande = commande  + tableau[2] + "', CYLINDREE='" + tableau[3] + "' WHERE ID=" + ID_char + "; ";
+
+      // Exécution de la requète
+      nRows = db.execDML(commande.c_str());
+      y++;
+      gotoxy (x,y++);
+      fprintf(stdout, "Appuyer sur une touche:\n");
+      touche = _getch();
+   }
+   catch (CppSQLite3Exception& e)
+   {
+      cerr << e.errorCode() << ":" << e.errorMessage() << endl;
+   }
+   return 1;
+}
+
 
 /*******************************************
 *                 fermer_bd                *

@@ -15,7 +15,7 @@
 
 #include "console.h"
 #include "menu.h"
-#include "base.h"
+#include "base_CppSqlite3.h"
 
 int main(int argc, char* argv[])
 {
@@ -44,13 +44,16 @@ int main(int argc, char* argv[])
               ret = ajouter_element();
               break;
             case 4:
-              ret = supprimer_element();
+              ret = editer_element();
               break;
             case 5:
+              ret = supprimer_element();
+              break;
+            case 6:
               ret = renumeroter_ID_base();
               //ret = reindexer_base();
               break;
-            case 6:
+            case 7:
               quitter=true;
               break;
             default:

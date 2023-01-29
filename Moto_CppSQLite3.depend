@@ -51,3 +51,46 @@
 	"CppSQLite3.h"
 	<cstdlib>
 
+1674987545 source:c:\users\alain\documents\github\moto_sqlite\src\console.cpp
+	<string>
+	"console.h"
+	<conio.h>
+
+1674925370 c:\users\alain\documents\github\moto_sqlite\src\console.h
+	<windows.h>
+	<string>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<time.h>
+
+1674989785 source:c:\users\alain\documents\github\moto_sqlite\src\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<locale>
+	"console.h"
+	"menu.h"
+	"base_CppSqlite3.h"
+
+1674925370 c:\users\alain\documents\github\moto_sqlite\src\menu.h
+
+1662289217 c:\users\alain\documents\github\moto_sqlite\src\base.h
+
+1674990140 source:c:\users\alain\documents\github\moto_sqlite\src\menu.cpp
+	"console.h"
+
+1674991851 source:c:\users\alain\documents\github\moto_sqlite\src\base_cppsqlite3.cpp
+	<stdio.h>
+	<windows.h>
+	"console.h"
+	<string.h>
+	<vector>
+	"CppSQLite3.h"
+	<iostream>
+
+1674989502 c:\users\alain\documents\github\moto_sqlite\src\base_cppsqlite3.h
+
