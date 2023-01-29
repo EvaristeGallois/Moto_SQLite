@@ -5,7 +5,8 @@
 /*                    menu.c                       */
 /*                                                 */
 /***************************************************/
-
+// Permet la génération et le traitement d'un menu vertical
+// sur la console
 #include "console.h"
 
 static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Supprimer un élément","Renuméroter ID","Quitter"};

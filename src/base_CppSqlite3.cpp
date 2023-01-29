@@ -7,7 +7,7 @@
 #include <windows.h>
 #include "console.h"
 #include <string.h> // Penser à inclure string.h pour strchr()
-#include "CppSQLite3/CppSQLite3.h"
+#include "CppSQLite3.h"
 #include <iostream>
 
 
