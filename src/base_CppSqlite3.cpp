@@ -263,10 +263,8 @@ int editer_element(void)
       char ID_char[4];
       char *tab = new char[50];
       char *liste_saisie[4] = {"Entrez la marque :","Entrez le modèle :","Entrez le type :","Entrez la cylindrée :"};
-      int nb_champs = 4;
       string commande;
       int x = 10, y = 3, id;
-      string chaine;
       vector<string> tableau;
 
       clear_console();
@@ -288,8 +286,7 @@ int editer_element(void)
          {
             if (!q.fieldIsNull(fld))
             {
-               chaine.assign(q.fieldValue(fld));
-               tableau.emplace_back(chaine);
+               tableau.emplace_back(q.fieldValue(fld));
             }
             else
             {
@@ -327,6 +324,8 @@ int editer_element(void)
       // Exécution de la requète
       nRows = db.execDML(commande.c_str());
       y++;
+      gotoxy (x,y++);
+      fprintf(stdout, "Enregistrement modifié.\n");
       gotoxy (x,y++);
       fprintf(stdout, "Appuyer sur une touche:\n");
       touche = _getch();

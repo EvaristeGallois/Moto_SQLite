@@ -6,8 +6,10 @@
 /*                                                     */
 /*        Gestion de l'écran en mode console           */
 /*                                                     */
-/*                 Version : 1.01                      */
+/*                 Version : 1.02                      */
 /*******************************************************/
+// 31/01/2023 Version 1.02 : Prise en compte des flêches gauche
+//                           et droite dans la saisie "edit_line"
 // 28/03/2021 Version 1.01 : Ajout des fonctions "edit_line"
 //                           et "edit_line_string"
 //                           Qui permettent de modifier/saisir une
@@ -57,11 +59,11 @@ HANDLE GetStdout()
       h=GetStdHandle(STD_OUTPUT_HANDLE);
       if (h == INVALID_HANDLE_VALUE)
       {
-         char *data = "impossible d'obtenir std output handle";
-         debug(Fatal,data);
+         //char const *data = "impossible d'obtenir std output handle";
+         debug(Fatal,(char *)"impossible d'obtenir std output handle");
       }
-      return h;
    }
+   return h;
 }
 
 /*-----------------------------------------------------*/
@@ -78,7 +80,7 @@ HANDLE GetStdin()
    {
       h=GetStdHandle(STD_INPUT_HANDLE);
       if (h == INVALID_HANDLE_VALUE)
-         debug(Fatal,"impossible d'obtenir std input handle");
+         debug(Fatal,(char*)"impossible d'obtenir std input handle");
    }
    return h;
 }
@@ -97,7 +99,7 @@ HANDLE GetConsoleW()
    {
       h=GetConsoleWindow();
       if (h == INVALID_HANDLE_VALUE)
-         debug(Fatal,"impossible d'obtenir handle console");
+         debug(Fatal,(char*)"impossible d'obtenir handle console");
    }
    return h;
 }
@@ -166,7 +168,7 @@ BOOL resize_console(int width, int height)
    SMALL_RECT rWindow= {0,0,1,1};
    if(!SetConsoleWindowInfo(GetStdout(),TRUE, &rWindow ))
    {
-      debug(Error,"[resize_console]SetConsoleWindowInfo()");
+      debug(Error, (char *)"[resize_console]SetConsoleWindowInfo()");
       return FALSE;
    }
    sizeMax=GetLargestConsoleWindowSize(GetStdout());
@@ -179,7 +181,7 @@ BOOL resize_console(int width, int height)
 
    if (!SetConsoleScreenBufferSize(GetStdout(),size))
    {
-      debug(Error,"[resize_console]SetConsoleScreenBufferSize");
+      debug(Error, (char*)"[resize_console]SetConsoleScreenBufferSize");
       return FALSE;
    }
 
@@ -189,7 +191,7 @@ BOOL resize_console(int width, int height)
 
    if(!SetConsoleWindowInfo(GetStdout(),TRUE, &rWindow ))
    {
-      debug(Error,"[resize_console]SetConsoleWindowInfo");
+      debug(Error, (char *)"[resize_console]SetConsoleWindowInfo");
       return FALSE;
    }
    return TRUE;
@@ -271,7 +273,7 @@ void fill_console(char asciiChar, int color)
 
    if (!GetConsoleScreenBufferInfo(GetStdout(),&info))
    {
-      debug(Error,"[fill_console]GetConsoleScreenBufferInfo");
+      debug(Error, (char*)"[fill_console]GetConsoleScreenBufferInfo");
       return;
    }
 
@@ -306,7 +308,7 @@ void fill_console(char asciiChar, int color)
                             coord(w,h),	 // taille
                             coord(0,0),	 // coin src départ
                             &bRect) )		 // rect de destination
-      debug(Error,"[fill_console]WriteConsoleOutput");
+      debug(Error,(char*)"[fill_console]WriteConsoleOutput");
 
 }
 
@@ -374,7 +376,7 @@ void test_screen_console_info(int x,int y,int color)
    set_color(color);
    printf("SCREEN BUFFER INFO :\n");
    if(!GetConsoleScreenBufferInfo(GetStdout(),&info))
-      debug(Error,"[test_screen_console_info]GetConsoleScreenBufferInfo");
+      debug(Error, (char*)"[test_screen_console_info]GetConsoleScreenBufferInfo");
    else
    {
       gotoxy(x,wherey());
@@ -582,7 +584,7 @@ void show_cursor(BOOL visible)
 {
    CONSOLE_CURSOR_INFO info;
    if (!GetConsoleCursorInfo(GetStdout(),&info))
-      debug(Error,"[show_cursor]GetConsoleCursorInfo");
+      debug(Error, (char*)"[show_cursor]GetConsoleCursorInfo");
    else
    {
       info.bVisible=visible;
@@ -603,7 +605,7 @@ void size_cursor(unsigned int size)
 {
    CONSOLE_CURSOR_INFO info;
    if (!GetConsoleCursorInfo(GetStdout(),&info))
-      debug(Error,"[size_cursor]GetConsoleCursorInfo");
+      debug(Error, (char*)"[size_cursor]GetConsoleCursorInfo");
    else
    {
       info.dwSize=size;
@@ -779,6 +781,7 @@ BOOL click_pressed(int button)
 /*                    SAISIE DE TEXTE                  */
 /*                                                     */
 /*******************************************************/
+
 /*-----------------------------------------------------*/
 /*                                                     */
 /*                     edit_line                       */
@@ -790,7 +793,7 @@ BOOL click_pressed(int button)
 
 int edit_line(char *line, int long_max, int pos_x, int pos_y)
 {
-   int lg, cur_pos_x;
+   int lg, cur_pos_x, cur;
    char c='a';
    char *text = (char*)malloc(long_max + 1);
    if(text==NULL) // Erreur malloc
@@ -801,25 +804,68 @@ int edit_line(char *line, int long_max, int pos_x, int pos_y)
    printf("%s", text);
    lg=strlen(text);
    cur_pos_x = pos_x + lg;
+   cur = cur_pos_x;
    gotoxy(cur_pos_x, pos_y);
    show_cursor(TRUE);
 
    while (c!=13)
    {
       c=getch();
+
       if (c >= ' ' && c <= 'z' && lg <= long_max )
       {
          putch(c);
          text[lg++] = c;
+         cur++;
          gotoxy(cur_pos_x++, pos_y);
       }
       else
       {
          if(c==(char)0x08 && lg >= 1)  //Backspace
          {
-            gotoxy(--cur_pos_x,pos_y);
-            putch(' ');
-            text[--lg]='\0';
+            if (cur == lg)
+            {
+               gotoxy(--cur_pos_x,pos_y);
+               putch(' ');
+               text[--lg]='\0';
+               cur--;
+            }
+            else
+            {
+               cur--;
+               cur_pos_x = cur;
+               gotoxy(cur_pos_x,pos_y);
+               show_cursor(FALSE);
+
+               for (int i = cur; i < lg; i++)
+               {
+                  text[i-1] = text[i];
+                  gotoxy(i,pos_y);
+                  putch(text[i]);
+
+               }
+               gotoxy(lg,pos_y);
+               putch(' ');
+
+               lg--;
+               text[lg]='\0';
+               show_cursor(TRUE);
+            }
+
+         }
+         if (c==(char)0x00|| c==(char)0xE0)   // touche combinée
+         {
+            c = getch(); /* lecture touche etendue */
+            if(c==(char)0x4B && lg >= 1 && cur > 0)  //flêche gauche
+            {
+               cur_pos_x--;
+               cur--;
+            }
+            if(c==(char)0x4D && lg >= 1 && cur <= lg)  //flêche droite
+            {
+               cur_pos_x++;
+               cur++;
+            }
          }
       }
       gotoxy(cur_pos_x, pos_y);
@@ -968,7 +1014,7 @@ void fill_part_chb(	CHBITMAP*b,		// la chbitmap
          }
    }
    else
-      debug(Warming,"[fill_part_chb]chbitmap non initialisee");
+      debug(Warming, (char*)"[fill_part_chb]chbitmap non initialisee");
 }
 
 /*-----------------------------------------------------*/
@@ -996,7 +1042,7 @@ void clear_chb(CHBITMAP*b)
       //fill_chbitmap(b,0,0);
       memset(b->dat,0,sizeof(CHAR_INFO)*b->w*b->h);
    else
-      debug(Warming,"[clear_chbitmap]chbitmap non initialisee");
+      debug(Warming, (char*)"[clear_chbitmap]chbitmap non initialisee");
 }
 
 /*-----------------------------------------------------*/
@@ -1036,7 +1082,7 @@ void copy_chb (	CHBITMAP*src,		// source
          }
    }
    else
-      debug(Warming,"[copy_chbitmap]source ou destination non allouee");
+      debug(Warming, (char*)"[copy_chbitmap]source ou destination non allouee");
 }
 
 /*-----------------------------------------------------*/
@@ -1051,7 +1097,7 @@ void draw_chb(CHBITMAP*dst,CHBITMAP*src, int x, int y)
    if (dst != NULL && src != NULL)
       copy_chb (src,dst,0,0,x,y,src->w,src->h);
    else
-      debug(Warming,"[draw_buffer]chbitmap source ou destination non allouee");
+      debug(Warming, (char*)"[draw_buffer]chbitmap source ou destination non allouee");
 }
 
 
@@ -1078,10 +1124,10 @@ void show_to_console(CHBITMAP*b, int x, int y)
                                coord(b->w,b->h),// sa taille
                                coord(0,0),	  // coin src départ
                                &bRect) )		  // rect de destination
-         debug(Error,"[show_to_console]erreur WriteConsoleOutput");
+         debug(Error, (char*)"[show_to_console]erreur WriteConsoleOutput");
    }
    else
-      debug(Warming,"[show_to_console] chbitmap non allouee");
+      debug(Warming, (char*)"[show_to_console] chbitmap non allouee");
 }
 
 /*-----------------------------------------------------*/

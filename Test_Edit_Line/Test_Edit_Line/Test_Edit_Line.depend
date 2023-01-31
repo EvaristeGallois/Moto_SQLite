@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1675162842 source:c:\users\alain\documents\github\moto_sqlite\test_edit_line\test_edit_line\main.cpp
+	<iostream>
+	"console.h"
+	<string>
+	<iostream>
+
+1674925370 c:\users\alain\documents\github\moto_sqlite\src\console.h
+	<windows.h>
+	<string>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<time.h>
+
+1675166654 source:c:\users\alain\documents\github\moto_sqlite\src\console.cpp
+	<string>
+	"console.h"
+	<conio.h>
+

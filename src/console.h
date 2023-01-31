@@ -1,11 +1,15 @@
-/**********************************************/
-/*                                            */
-/*                  console.h                 */
-/*                                            */
-/*     Gestion de l'écran en mode console     */
-/*                                            */
-/*                Version : 1.01              */
-/**********************************************/
+/*******************************************************/
+/*                                                     */
+/*           GESTIONNAIRE DE CONSOLE                   */
+/*                                                     */
+/*                    console.h                        */
+/*                                                     */
+/*        Gestion de l'écran en mode console           */
+/*                                                     */
+/*                 Version : 1.02                      */
+/*******************************************************/
+// 31/01/2023 Version 1.02 : Prise en compte des flêches gauche
+//                           et droite dans la saisie "edit_line"
 // 28/03/2021 Version 1.01 : Ajout des fonctions "edit_line"
 //                           et "edit_line_string"
 //                           Qui permettent de modifier/saisir une
@@ -83,7 +87,7 @@ COORD    coord(int x, int y);
 HANDLE	 GetStdout(void);
 HANDLE	 GetStdin(void);
 HANDLE	 GetConsoleW(void);
-void	   debug(int errLevel,char*msg);
+void	   debug(int errLevel, char *msg);
 
 /*---------------------------------------*/
 /*            Fonctions console          */

@@ -19,8 +19,8 @@
 
 int main(int argc, char* argv[])
 {
-    int menu_choisi, ret, i, quitter=0;
-    bool quiter = false;
+    int menu_choisi, ret, i;
+    bool quitter = false;
 
     setlocale(LC_CTYPE, "fra"); // Initialisation du jeu de caractères accentués Français
     // redimensionnement de la console
