@@ -98,7 +98,7 @@ int lire(char *chaine, int longueur)
 
 
 /*******************************************
-*           creation_ouverture_bd          *
+*           creation_ouverture_bd2          *
 *******************************************/
 int creation_ouverture_bd(void)
 {
@@ -137,7 +137,7 @@ int creation_ouverture_bd(void)
 }
 
 /*******************************************
-*             supprimer_element            *
+*             supprimer_element2            *
 *******************************************/
 int supprimer_element(void)
 {
@@ -175,7 +175,7 @@ int supprimer_element(void)
 }
 
 /*******************************************
-*            renumeroter_ID_base           *
+*            renumeroter_ID_base2           *
 *******************************************/
 int renumeroter_ID_base(void)
 {

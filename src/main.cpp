@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
               ret = ajouter_element();
               break;
             case 4:
-              ret = editer_element();
+              ret = editer_element(); // Dans version CppSqlite
               break;
             case 5:
               ret = supprimer_element();
