@@ -5,17 +5,33 @@
 /*                    menu.c                       */
 /*                                                 */
 /***************************************************/
-// Permet la génération et le traitement d'un menu vertical
+// Permet la gï¿½nï¿½ration et le traitement d'un menu vertical
 // sur la console
 #include "console.h"
 
-static const char* Menu[] = {"Créer/Ouvrir la Base","Lister la base","Ajouter un élément","Editer un élément","Supprimer un élément","Renuméroter ID","Quitter"};
+// DÃ©finition du menu
+static const std::array<std::string, 7> Menu = {
+    "CrÃ©er/Ouvrir la Base",
+    "Lister la base",
+    "Ajouter un Ã©lÃ©ment",
+    "Editer un Ã©lÃ©ment",
+    "Supprimer un Ã©lÃ©ment",
+    "RenumÃ©roter ID",
+    "Quitter"
+};
+
+// Codes des touches (Windows)
+constexpr int KEY_UP = 0x48;
+constexpr int KEY_DOWN = 0x50;
+constexpr int KEY_ENTER = 0x0D;
+
+/// OLD  static const char* Menu[] = {"Crï¿½er/Ouvrir la Base","Lister la base","Ajouter un ï¿½lï¿½ment","Editer un ï¿½lï¿½ment","Supprimer un ï¿½lï¿½ment","Renumï¿½roter ID","Quitter"};
 
 int Choix_menu(int pos_x, int pos_y)
 {
     int nb_elements = 7;
     int i,curseur = 0;
-    int touche; // Touche enfoncée : Flêche haute, Flêche basse
+    int touche; // Touche enfoncï¿½e : Flï¿½che haute, Flï¿½che basse
     show_cursor(0);
     clear_console();
     for (i = 0; i < nb_elements; i++)
@@ -25,12 +41,13 @@ int Choix_menu(int pos_x, int pos_y)
     }
     gotoxy(pos_x,pos_y);
     printf(">");
-    while (1)
+    while (true)
     {
+        /*
         touche = _getch();
-        if (touche == 0x50 && curseur < nb_elements-1) // Test si flêche basse
+        if (touche == 0x50 && curseur < nb_elements-1) // Test si flï¿½che basse
             curseur++;
-        if (touche == 0x48 && curseur > 0) // Test si flêche haute
+        if (touche == 0x48 && curseur > 0) // Test si flï¿½che haute
             curseur--;
         if (touche == 0x0D) // Test si Retour Chariot
             return curseur + 1;
@@ -39,7 +56,29 @@ int Choix_menu(int pos_x, int pos_y)
             gotoxy(pos_x,pos_y+i);
             printf("%c\n", (i == curseur) ? '>':' ');
         }
+        */
+         touche = _getch();
 
+        if (touche == KEY_DOWN && curseur < nb_elements - 1)
+        {
+            ++curseur;
+        }
+        else if (touche == KEY_UP && curseur > 0)
+        {
+            --curseur;
+        }
+        else if (touche == KEY_ENTER)
+        {
+            show_cursor(1); // RÃ©afficher le curseur avant de quitter
+            return curseur + 1; // +1 si tu veux l'index Ã  partir de 1
+        }
+
+        // Mise Ã  jour de l'affichage
+        for (int i = 0; i < nb_elements; ++i)
+        {
+            gotoxy(pos_x, pos_y + i);
+            std::cout << ((i == curseur) ? ">" : " ") << " " << Menu[i];
+        }
     }
     show_cursor(1);
     return 0;
